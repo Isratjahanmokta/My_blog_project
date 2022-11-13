@@ -29,13 +29,13 @@ def login_page(request):
             user = authenticate(username= username, password=password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect(reverse('Index'))
+                return HttpResponseRedirect(reverse('index'))
     return render(request, 'App_login/login.html', context={'form':form})
 
 @login_required()
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect(reverse('Index'))
+    return HttpResponseRedirect(reverse('index'))
 
 @login_required()
 def profile(request):
@@ -63,6 +63,6 @@ def pass_change(request):
     return render(request, 'App_login/change_pass.html', context = {'form':form, 'changed':changed })
 
 @login_required()
-def add_pro_pic(request):
+def pro_pic_add(request):
     form = ProfilePic()
     return render(request, 'App_login/pro_pic_add.html', context={'form':form})

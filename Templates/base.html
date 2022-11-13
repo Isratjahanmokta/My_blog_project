@@ -16,20 +16,19 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'Index' %}"><img src="media/logo.JPG"  width = "50px" ></a> 
-            
+            <a class="nav-link" href="{% url 'index' %}"><img src="/media/logo.jpg"  width = "50px" ></a> 
           </li>
           {% if user.is_authenticated %}
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-            @{{user.username}}
-          </a>
-          <div class="dropdown_manu">
-            <a class="nav-dropdown_item" href="{% url 'App_blog:Create_blog' %}">Write Blog</a>
-            <a class="nav-dropdown_item" href="{% url 'App_login:profile' %}">Profile</a>
-            <a class = "dropdown_item" href="{% url 'App_login:logout' %}">Logout</a>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+              @{{user.username}}
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'App_blog:create_blog' %}">Write Blog</a>
+              <a class="dropdown-item" href="{% url 'App_login:profile' %}">Profile</a>
+              <a class="dropdown-item" href="{% url 'App_login:logout' %}">Logout</a>
+            </div>
           </div>
-        </div>
           {% else %}
           <li class="nav-item ">
             <a class="nav-link" href="{% url 'App_login:signup' %}">SIgn Up</a>
@@ -39,8 +38,6 @@
           </li>
           {% endif %}
         </ul>
-        
-        {% endif %}
     </nav>
 <div class="container" style="padding-top:20px">
   {% block body_block %}
